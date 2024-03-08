@@ -8,7 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-require "open-url"
+require "open-uri"
 require "json"
 
 puts "cleaning the db"
@@ -23,7 +23,7 @@ response = JSON.parse(serialized_response)
 movies = response['results']
 
 movies.each do |movie|
-  puts "adding #{movie[title]}"
+  puts "adding #{movie['title']}"
   Movie.create!(
     title: movie['title'],
     overview: movie['overview'],
